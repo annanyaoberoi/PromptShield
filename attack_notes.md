@@ -111,3 +111,34 @@ Attackers often use encoding techniques to bypass basic security checks. PromptS
 3. Encoded payloads can bypass simple keyword filters.
 4. Effective protection requires more than basic regex matching.
 5. Security testing should combine automated scanning and manual attack analysis.
+
+## The Lethal Trifecta
+
+The Lethal Trifecta describes the three conditions that make LLM applications vulnerable to serious attacks.
+
+### 1. Untrusted Input
+
+The attacker controls the input sent to the model.
+
+Example:
+A malicious user submits a prompt injection attack.
+
+### 2. Private Data Access
+
+The model has access to sensitive information.
+
+Example:
+ShopBot contains hidden instructions and an administrator discount code.
+
+### 3. Exfiltration Channel
+
+The model can send information back to the attacker through its output.
+
+Example:
+The model reveals hidden instructions in its response.
+
+### Why It Matters
+
+When all three conditions exist together, an attacker may be able to extract sensitive information from the system through prompt injection attacks.
+
+For PromptShield, reducing or monitoring these conditions is essential for preventing data leakage and prompt extraction attacks.
