@@ -1,0 +1,24 @@
+# PromptShield — Phase 1 dependencies
+# Pin minor versions; let patch versions float for security fixes.
+
+# Web framework
+fastapi==0.115.*
+uvicorn[standard]==0.34.*      # ASGI server (includes httptools + uvloop for speed)
+
+# Data validation (FastAPI dependency)
+pydantic==2.10.*
+
+# Async HTTP client (upstream ShopBot calls)
+httpx==0.28.*
+
+# Async PostgreSQL driver
+asyncpg==0.30.*
+
+# Environment variable loading
+python-dotenv==1.0.*
+
+# ── Phase 2 (ML layer) — uncomment when you reach it ──────────────────────
+# sentence-transformers==3.*
+# scikit-learn==1.6.*
+# datasets==3.*                  # HuggingFace datasets for training data
+# llm-guard==0.3.*               # Protect AI — study its scanners, then build your own
