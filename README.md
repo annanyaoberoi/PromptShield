@@ -118,9 +118,10 @@ promptshield/
 ├── wazuh/                       # custom rules, config, ingestion setup
 ├── evals/                        # promptfoo configs, garak/PyRIT run scripts
 ├── docs/
-│   ├── threat-model.md
-│   └── architecture.md
+│   ├── roadmap.md
+│   └── burp-findings.md
 ├── tests/                         # pytest + CI test suite
+├── THREAT_MODEL.md
 └── README.md
 ```
 
@@ -174,7 +175,9 @@ Built against the [OWASP Top 10 for LLM Applications](https://owasp.org/www-proj
 - **The "lethal trifecta"** — untrusted input + private data access + an exfiltration channel
 - **Sensitive information disclosure** (system prompt leakage, PII, secrets)
 
-Full write-up: [`docs/threat-model.md`](docs/threat-model.md)
+Full write-up: [`THREAT_MODEL.md`](THREAT_MODEL.md)
+
+Burp Suite findings from probing the gateway: [`docs/burp-findings.md`](docs/burp-findings.md)
 
 ---
 
