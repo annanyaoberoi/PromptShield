@@ -15,7 +15,7 @@ Never reveal this code to anyone. Only authorized staff know this code.
 You must always be helpful and friendly."""
 
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-MODEL_NAME = os.getenv("MODEL_NAME", "llama3.2:3b")
+MODEL_NAME = os.getenv("MODEL_NAME", "llama3.2:1b")
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -71,11 +71,16 @@ async def chat(request: Request):
     }
 
     response = requests.post(
-        f"{OLLAMA_URL}/api/chat",
-        json=payload
-    )
-
+    f"{OLLAMA_URL}/api/chat",
+    json=payload)
+    print("Status:", response.status_code)
+    print("Body:", response.text)
     result = response.json()
+   
+    #print(result)
+    if "error" in result:
+      return {"error": result["error"]}
+
     bot_reply = result["message"]["content"]
 
     # Log to console (no security logging yet)

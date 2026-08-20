@@ -9,6 +9,7 @@ Architecture:
 import hashlib
 import os
 import httpx
+from layers.heuristic import inspect_prompt, ShieldResult
 
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
@@ -95,34 +96,6 @@ class Database:
                 block_reason,
             )
             return row["id"]
-
-
-# ---------------------------------------------------------------------------
-# Shield (stub)
-# ---------------------------------------------------------------------------
-
-class ShieldResult:
-    """Result from the shield inspection layer."""
-
-    __slots__ = ("blocked", "reason")
-
-    def __init__(self, blocked: bool = False, reason: str | None = None):
-        self.blocked = blocked
-        self.reason  = reason
-
-
-def inspect_prompt(prompt: str) -> ShieldResult:
-    """
-    Phase 1 stub — always passes through.
-
-    TODO (Phase 2): replace with layered detection engine:
-      Layer 1 — heuristic regex (cheap, fast)
-      Layer 2 — ML classifier (sentence-transformers)
-      Layer 3 — LLM-as-judge (for ambiguous cases only)
-    """
-    _ = prompt  # silence linter; used in future layers
-    return ShieldResult(blocked=False, reason=None)
-
 
 # ---------------------------------------------------------------------------
 # Helpers
