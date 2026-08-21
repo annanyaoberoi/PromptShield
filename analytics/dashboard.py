@@ -3,8 +3,10 @@ import psycopg2
 import pandas as pd
 import streamlit as st
 from dotenv import load_dotenv
+from pathlib import Path
 
-load_dotenv("/home/kali/promptshield/promptshield-gateway/.env")
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / "promptshield-gateway" / ".env")
 
 DATABASE_URL = os.environ["DATABASE_URL"]
 
